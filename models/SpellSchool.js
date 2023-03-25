@@ -1,18 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class ClassSpell extends Model {}
+class SpellSchool extends Model {}
 
-ClassSpell.init({
+SpellSchool.init({
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true    
-    }, 
-    level: {
-        type: DataTypes.INTEGER,
-        require: true,
-        allowNull: false
     },
     spellId: {
         type: DataTypes.INTEGER,
@@ -22,11 +17,11 @@ ClassSpell.init({
             id: "id"
         }
     },
-    classId: {
+    schoolId: {
         type: DataTypes.INTEGER,
         require: true,
         references: {
-            model: "classes",
+            model: "schools",
             id: "id"
         }
     }
@@ -35,7 +30,7 @@ ClassSpell.init({
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "class_spells"
+    modelName: "spell_schools"
 })
 
-module.exports = ClassSpell;
+module.exports = SpellSchool;
