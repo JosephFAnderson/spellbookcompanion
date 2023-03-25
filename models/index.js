@@ -4,6 +4,7 @@ const Class = require("./Class");
 const Spell = require("./Spell");
 const Domain = require("./Domain");
 const School = require("./School");
+const Subschool = require("./Subschool");
 
 //Table Associations Will Be Definied Here
 
@@ -13,5 +14,6 @@ module.exports = {
     Class,
     Spell,
     Domain,
-    School
+    School,
+    Subschool,
 }
