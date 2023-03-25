@@ -9,6 +9,8 @@ const Descriptor = require("./Descriptor");
 const CharacterSpell = require("./CharacterSpell");
 const ClassSpell = require("./ClassSpell");
 const SpellSchool = require("./SpellSchool");
+const SpellSubschool = require("./SpellSubschool");
+const SpellDescriptor = require("./SpellDescriptor");
 
 //Table Associations Will Be Definied Here
 
@@ -23,5 +25,7 @@ module.exports = {
     Descriptor,
     CharacterSpell,
     ClassSpell,
-    SpellSchool
+    SpellSchool,
+    SpellSubschool,
+    SpellDescriptor
 }
