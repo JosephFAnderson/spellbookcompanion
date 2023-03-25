@@ -10,7 +10,7 @@ Class.init({
         primaryKey: true
     },
     name: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
         require: true,        
     }
 }, {
