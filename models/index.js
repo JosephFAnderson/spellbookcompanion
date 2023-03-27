@@ -13,7 +13,6 @@ const SpellSubschool = require("./SpellSubschool");
 const SpellDescriptor = require("./SpellDescriptor");
 const DomainSpell = require("./DomainSpell");
 
-//Table Associations Will Be Definied Here
 User.hasMany(Character, { foreignKey: "user_id" });
 Character.belongsTo(User, { foreignKey: "user_id" });
 
