@@ -9,6 +9,11 @@ Spell.init({
         autoIncrement: true,
         primaryKey: true
     },
+    name: {
+        type: DataTypes.STRING,
+        reqruie: true,
+        allowNull: false
+    },
     components: {
         type: DataTypes.STRING,
         require: true,
@@ -23,6 +28,11 @@ Spell.init({
         type: DataTypes.STRING,
         require: true,
         allowNull: false
+    },
+    target: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: null
     },
     area: {
         type: DataTypes.STRING,
