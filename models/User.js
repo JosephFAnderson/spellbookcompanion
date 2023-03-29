@@ -40,16 +40,15 @@ User.init({
             user.password = await bcrypt.hash(user.password, salt);
         },
     },
-    instanceMethods: {
-        validPassword: function(password) {
-            return bcrypt.compare(password, this.password);
-        }
-    },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "users"
 })
+
+User.prototype.validPassword = async function(password) {
+    return await bcrypt.compare(password, this.password);
+}
 
 module.exports = User;
