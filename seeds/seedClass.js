@@ -8,7 +8,8 @@ const seedClasses = async () => {
             return;
         }
     
-        const dataArray = data.split('\r\n');
+        const dataArray = data.split('\n');
+        console.log(dataArray);
         seeding(dataArray);
     })
     
