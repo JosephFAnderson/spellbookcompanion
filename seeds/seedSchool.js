@@ -8,7 +8,7 @@ const seedSchools = async () => {
             return;
         }
     
-        const dataArray = data.split('\r\n');
+        const dataArray = data.split('\n');
         seeding(dataArray);
     })
     
