@@ -22,7 +22,7 @@ router.post('/signup', async (req, res) => {
         // If no data is returned and password is 8+ characters long create new account. Otherwise do not.
         if(user.length === 0 && password.length >= 8){
             const newUser = await User.create({username, email, password});
-            res.status(200).json( newUser );
+            res.status(200).json( {username: newUser.username} );
         }else {
             res.status(400).json("Account already exist using provided information");
         }
