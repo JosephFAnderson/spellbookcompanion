@@ -31,23 +31,23 @@ export default function signup() {
   }
 
     return (
-      <div>
+      <div className="abc">
         <div>
           <h1>Please Sign Up Here!</h1>
-          <form onSubmit={handleFormSubmit}>
-            <section>
+          <form className="formContainer" onSubmit={handleFormSubmit}>
+            <section className="formField">
               <label htmlFor="username">Username</label>
-              <input id="username" name="username" type="text" required autoFocus></input>
+              <input id="username" name="username" type="text" placeholder="Username" required autoFocus></input>
             </section>
-            <section>
+            <section className="formField">
               <label htmlFor="email">Email</label>
-              <input id="email" name="email" type="text" required></input>
+              <input id="email" name="email" type="text" placeholder="Email" required></input>
             </section>
-            <section>
+            <section className="formField">
               <label htmlFor="password">Password</label>
-              <input id="current-password" name="password" type="password" minLength="8" required></input>
+              <input id="current-password" name="password" type="password" placeholder="Password" minLength="8" required></input>
             </section>
-            <button type="submit">Sign Up</button>
+            <button className="submitBtn" type="submit">Sign Up</button>
           </form>
         </div>        
         

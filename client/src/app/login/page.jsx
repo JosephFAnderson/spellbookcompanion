@@ -30,19 +30,19 @@ export default function Login() {
   }
 
     return (
-      <div>
+      <div className="abc">
         <div>
           <h1>Please Log In Here!</h1>
-          <form onSubmit={handleFormSubmit}>
-            <section>
+          <form className="formContainer" onSubmit={handleFormSubmit}>
+            <section className="formField">
               <label htmlFor="username">Username</label>
-              <input id="username" name="username" type="text" autoComplete="username" required autoFocus></input>
+              <input id="username" name="username" type="text" placeholder="Username" required autoFocus></input>
             </section>
-            <section>
+            <section className="formField">
               <label htmlFor="password">Password</label>
-              <input id="current-password" name="password" type="password" minLength="8" autoComplete="current-password" required></input>
+              <input id="current-password" name="password" type="password" minLength="8" placeholder="Password" required></input>
             </section>
-            <button type="submit">Log in</button>
+            <button className="submitBtn" type="submit">Log in</button>
           </form>
         </div>        
         
