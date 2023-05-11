@@ -1,8 +1,10 @@
 "use client"
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import './page.css';
 
 export default function signup() {
+  const router = useRouter();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -24,7 +26,10 @@ export default function signup() {
 
       const data = await res.json();
 
-      console.log(data);
+      if(data) {
+        router.push("/");
+      }
+      
     }catch (err) {
       console.error(err);
     }
