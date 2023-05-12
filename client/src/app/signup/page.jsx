@@ -1,25 +1,58 @@
+"use client"
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import './page.css';
 
-export default function signup() {
+export default function Signup() {
+  const router = useRouter();
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try{
+      const username = event.target.username.value;
+      const email = event.target.email.value;
+      const password = event.target.password.value;
+
+      const payload = { username, email, password }
+      
+      const res = await fetch( "http://localhost:3001/api/users/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      })
+
+      const data = await res.json();
+
+      if(data) {
+        router.push("/characters");
+      }
+      
+    }catch (err) {
+      console.error(err);
+    }
+  }
+
     return (
-      <div>
+      <div className="abc">
         <div>
           <h1>Please Sign Up Here!</h1>
-          <form>
-            <section>
+          <form className="formContainer" onSubmit={handleFormSubmit}>
+            <section className="formField">
               <label htmlFor="username">Username</label>
-              <input id="username" name="username" type="text" autoComplete="username" required autoFocus></input>
+              <input id="username" name="username" type="text" placeholder="Username" required autoFocus></input>
             </section>
-            <section>
+            <section className="formField">
               <label htmlFor="email">Email</label>
-              <input id="email" name="email" type="text" autoComplete="email" required></input>
+              <input id="email" name="email" type="text" placeholder="Email" required></input>
             </section>
-            <section>
+            <section className="formField">
               <label htmlFor="password">Password</label>
-              <input id="current-password" name="password" type="password" minLength="8" autoComplete="current-password" required></input>
+              <input id="current-password" name="password" type="password" placeholder="Password" minLength="8" required></input>
             </section>
-            <button type="submit">Sign Up</button>
+            <button className="button" type="submit">Sign Up</button>
           </form>
         </div>        
         

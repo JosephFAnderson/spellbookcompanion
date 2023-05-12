@@ -25,3 +25,29 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.headerContainer {
+  text-align: center;
+  background-color: blue
+}
+
+.logo {
+  font-size: 2em;
+  padding-top: 5px;
+}
+
+.links a {
+  margin: 0 10px;
+}
+
+.searchBar {
+  margin-top: 5px;
+  padding-bottom: 5px;
+}
+
+.button{
+  margin-bottom: 5px;
+  background-color: rgb(30, 169, 216);
+  border: 2px solid lightblue;
+  width: 50%;
+}
