@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Op } = require('sequelize');
-const { User } = require('../../models');
+const { User, Class, Character } = require('../../models');
 
 /* Create a new user account
  * Required in req.body
@@ -39,7 +39,23 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
     try{
         const { username, password } = req.body;
-        const user = await User.findOne({ where: { username }});
+        const user = await User.findOne({ 
+            where: {
+                username 
+            },
+            include: {
+                model: Character,
+                attributes: {
+                    exclude: ["user_id", "class_id"]
+                },
+                include: {
+                    model: Class,
+                    attributes: {
+                        exclude: "id"
+                    }
+                }
+            }
+        });
         
         if(!user){
             res.status(400).json("Invalid username or password");
@@ -49,11 +65,11 @@ router.post('/login', async (req, res) => {
         const valid = await user.validPassword(password);
 
         if(valid) {
-
             const userData = {
                 id: user.id,
                 username: user.username,
-                email: user.email
+                email: user.email,
+                characters: user.characters
             };
 
             // JWT will be returned in later!
@@ -63,7 +79,7 @@ router.post('/login', async (req, res) => {
 
         res.status(400).json("Invalid username or password");
     }catch (err) {
-        console.log(err);
+        console.error(err);
         res.status(500).json("Error");
     }
 })

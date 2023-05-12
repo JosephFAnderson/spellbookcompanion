@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import './page.css';
 
-export default function signup() {
+export default function Signup() {
   const router = useRouter();
 
   const handleFormSubmit = async (event) => {
@@ -27,7 +27,7 @@ export default function signup() {
       const data = await res.json();
 
       if(data) {
-        router.push("/");
+        router.push("/characters");
       }
       
     }catch (err) {
@@ -52,7 +52,7 @@ export default function signup() {
               <label htmlFor="password">Password</label>
               <input id="current-password" name="password" type="password" placeholder="Password" minLength="8" required></input>
             </section>
-            <button className="submitBtn" type="submit">Sign Up</button>
+            <button className="button" type="submit">Sign Up</button>
           </form>
         </div>        
         

@@ -10,6 +10,7 @@ const Header = () => {
                 <div className="links">
                     <Link href="/login">Login</Link>
                     <Link href="/signup">Sign Up</Link>
+                    <Link href="/characters">Characters</Link>
                 </div>
                 <div className="searchBar">
                     <input type="text" placeholder="Spell name"></input>

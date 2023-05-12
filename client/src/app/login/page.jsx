@@ -27,7 +27,7 @@ export default function Login() {
       
 
       if (data){
-        router.push("/");
+        router.push("/characters");
       }
     }catch (err) {
       console.error(err);
@@ -47,7 +47,7 @@ export default function Login() {
               <label htmlFor="password">Password</label>
               <input id="current-password" name="password" type="password" minLength="8" placeholder="Password" required></input>
             </section>
-            <button className="submitBtn" type="submit">Log in</button>
+            <button className="button" type="submit">Log in</button>
           </form>
         </div>        
         
