@@ -1,10 +1,12 @@
 "use client"
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useUserContext } from "../context/user";
 import "./page.css";
 
 export default function Login() {  
   const router = useRouter();
+  const [user, setUser] = useUserContext();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -27,6 +29,7 @@ export default function Login() {
       
 
       if (data){
+        setUser(data);
         router.push("/characters");
       }
     }catch (err) {
