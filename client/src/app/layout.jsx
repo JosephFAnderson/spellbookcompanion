@@ -14,11 +14,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <UserProvider>
-          <Header />
-          <main>
-            {children}
-          </main>
+        <UserProvider>        
+            <Header />
+            <main>
+              {children}
+            </main>
         </UserProvider>        
       </body>
     </html>

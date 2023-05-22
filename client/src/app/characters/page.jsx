@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { useUserContext } from "../context/user";
 import CharacterTile from "../components/CharacterTile";
 
-export default function Characters() {
+export default function CharactersPage() {
     const [user, setUser] = useUserContext();
 
     return (

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useUserContext } from "../context/user";
 import "./page.css";
 
-export default function Login() {  
+export default function LoginPage() {  
   const router = useRouter();
   const [user, setUser] = useUserContext();
 

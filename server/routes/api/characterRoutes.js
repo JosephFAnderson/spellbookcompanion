@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Character, Class } = require('../../models');
+const { Character, Class, CharacterSpell, Spell, Domain } = require('../../models');
 
 /* Create a new character
  * Required in req.body
@@ -33,12 +33,32 @@ router.get('/:id', async (req, res) => {
             where: {
                 id: req.params.id 
             },
-            include: {
+            include: [{
                 model: Class,
                 attributes: {
-                    exclude: ["id"]
+                    exclude: "id"
                 }
-        }});
+            }, {
+                model: Spell,
+                include: [{
+                    model: Class,
+                    attributes: {
+                        exclude: "id"
+                    },
+                    through: {
+                        attributes: ["level"]
+                    }
+                }, {
+                    model: Domain,
+                    attributes: {
+                        exclude: "id"
+                    },
+                    through: {
+                        attributes: ["level"]
+                    }
+                }]
+            }]    
+        });
 
         if(!character) {
             res.status(400).json("Character not found");
@@ -48,6 +68,23 @@ router.get('/:id', async (req, res) => {
         res.status(200).json(character);
     }catch (err) {
         res.status(500).json("Error");
+    }
+})
+
+/* Updates a character's known spells
+ *
+ *
+*/
+router.put('/:id', async (req, res) => {
+    try {
+        const character_id = req.params.id;
+        const spell_id = req.body.spell_id;
+
+        const data = await CharacterSpell.create({ character_id, spell_id });
+
+        res.status(200).json(data);
+    } catch (err) {
+        res.status(500).json(err);
     }
 })
 

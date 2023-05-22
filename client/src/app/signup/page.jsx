@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import './page.css';
 
-export default function Signup() {
+export default function SignupPage() {
   const router = useRouter();
 
   const handleFormSubmit = async (event) => {
