@@ -14,7 +14,7 @@ export default async function SpellPage({ params: { name } }) {
 
     return (
         <>
-            <div>
+            <section className="spellCard">
                 <h1 className="spellName">{spell.name}</h1>
                 <p className="source">({spell.sourcebook})</p>
                 <p className="schools">
@@ -63,7 +63,7 @@ export default async function SpellPage({ params: { name } }) {
                 <p className="spellResistance">Spell Resistance: {spell.spellResistance}</p>
                 <section className="description">{spell.description}</section>
                 {spell.materials ? <p className="materials">Materials: {spell.materials}</p> : <></>}
-            </div>
+            </section>
         </>
     )
     
