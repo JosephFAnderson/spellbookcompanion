@@ -26,11 +26,6 @@ body {
     rgb(var(--background-start-rgb));
 }
 
-/* main {
-  display: flex;
-  justify-content: center;
-} */
-
 .headerContainer {
   text-align: center;
   background-color: blue
