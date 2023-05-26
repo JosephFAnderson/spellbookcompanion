@@ -1,19 +1,18 @@
-"use client"
+import "./page.css";
 
 async function getSpell(name) {
     const response = await fetch(`http://localhost:3001/api/spells?name=${name}`);
     const spell = await response.json();
-    console.log(spell);
+    spell[0].description = await spell[0].description.replaceAll("%br%", "\n\n");
     return spell[0];
 }
 
 export default async function SpellPage({ params: { name } }) {
-    const spellName = name.replaceAll("-", "+");
+    const spellName = await name.replaceAll("-", "+");   
     const spell = await getSpell(spellName);
-    console.log(spell);
 
     return (
-        <>
+        <div className="card">
             <section className="spellCard">
                 <h1 className="spellName">{spell.name}</h1>
                 <p className="source">({spell.sourcebook})</p>
@@ -40,7 +39,7 @@ export default async function SpellPage({ params: { name } }) {
                                 })}
                             ]
                         </span> : <></>
-                        }                  
+                    }                  
                 </p>
                 <p className="level">Level: {
                     spell.classes.map( clas => {
@@ -61,10 +60,9 @@ export default async function SpellPage({ params: { name } }) {
                 <p className="duration">Duration: {spell.duration}</p>
                 <p className="savingThrow">Saving Throw: {spell.savingThrow}</p>
                 <p className="spellResistance">Spell Resistance: {spell.spellResistance}</p>
-                <section className="description">{spell.description}</section>
+                <section className="description" style={{whiteSpace: "pre-wrap"}}>{spell.description}</section>
                 {spell.materials ? <p className="materials">Materials: {spell.materials}</p> : <></>}
             </section>
-        </>
-    )
-    
+        </div>
+    )    
 }
