@@ -32,9 +32,7 @@ const Character = async ({ id }) => {
         <div>
             <h1>{character.name}</h1>
             {sortedSpells.map((spells, index) => {
-                console.log("spells", spells);
-                console.log("index", index);
-                return <Spells level={index} spells={spells} />
+                return <Spells key={index} level={index} spells={spells} />
             })}            
         </div>
     )
