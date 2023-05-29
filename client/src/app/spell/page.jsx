@@ -31,7 +31,10 @@ export default function SpellsQueryPage() {
 
     if (isLoading) return <p>Loading...</p>
     if(!spells) return <p>No spells found</p>
-    if(spells.length === 1) redirect(`/spell/${name}`)
+    if(spells.length === 1) {
+        const urlName = spells[0].name.replaceAll(" ", "-");
+        redirect(`/spell/${urlName}`)
+    }
 
     return (
         <div className="card">

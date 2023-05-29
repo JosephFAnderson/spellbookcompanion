@@ -37,7 +37,7 @@ export default function Header() {
                 </div>
                 <div className="searchBar">
                     <input type="text" placeholder="Spell name" onChange={event => setQuery(event.target.value)}></input>
-                    <button onClick={ () => console.log(query)}>Search</button>
+                    <Link href={`/spell?name=${query}`}>Search</Link>
                 </div>
             </div>
         </header>
