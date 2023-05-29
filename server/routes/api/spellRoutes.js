@@ -13,6 +13,7 @@ const { Spell, Class, Domain, School, Subschool, Descriptor } = require('../../m
 */
 router.get('/', async (req, res) => {
     try{
+        console.log("hello");
         const filter = req.query;
         const { name, className, domain, school, descriptor } = filter;
 
@@ -333,6 +334,7 @@ router.get('/', async (req, res) => {
 
         
     }catch (err) {
+        console.error(err);
         res.status(500).json("Error");
     }
 });
