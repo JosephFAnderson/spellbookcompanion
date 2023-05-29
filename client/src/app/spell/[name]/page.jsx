@@ -1,10 +1,18 @@
 import "./page.css";
+import { redirect } from "next/navigation";
 
 async function getSpell(name) {
     const response = await fetch(`http://localhost:3001/api/spells?name=${name}`);
     const spell = await response.json();
+
+    // If query returns more than 1 spell redirect to SpellQueryPage
+    if(spell.length > 1) {
+        redirect(`/spell?name=${name}`)
+    }  
+
+    //Create line breaks in the spell description
     spell[0].description = await spell[0].description.replaceAll("%br%", "\n\n");
-    return spell[0];
+    return spell[0];      
 }
 
 export default async function SpellPage({ params: { name } }) {

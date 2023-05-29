@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Spells({ level, spells }) {
     return (
-        <div className="card">
+        <div className="spellsContainer">
             <h2 className="levelHeaader">Level {level}</h2>
             <section className="spellCard">
                 <ul className="spellList">
