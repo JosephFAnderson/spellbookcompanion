@@ -13,6 +13,10 @@ export default function Header() {
         setUser();
     }
 
+    const handleSearch = () => {
+        setQuery("");
+    }
+
     return (
         <header className="header">
             <div className="headerContainer">
@@ -35,11 +39,17 @@ export default function Header() {
                         )
                     }                      
                 </div>
-                <div className="searchBar">
-                    <input type="text" placeholder="Spell name" onChange={event => setQuery(event.target.value)}></input>
-                    <Link href={`/spell?name=${query}`}>Search</Link>
+                <div className="searchBar flex justify-center">
+                    <input type="text" placeholder="Spell name" className="text-black" value={query} onChange={event => setQuery(event.target.value)}></input>
+                    <Link onClick={handleSearch} href={`/spell?name=${query}`}>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="black" className="w-6 h-6 bg-white">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </Link>
                 </div>
             </div>
         </header>
     )
 }
+
+
