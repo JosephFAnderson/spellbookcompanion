@@ -1,9 +1,6 @@
 import Header from './components/Header'
 import { UserProvider } from "./context/user";
 import './globals.css'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Spellbook Companion',
@@ -13,10 +10,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="h-screen">
         <UserProvider>        
             <Header />
-            <main>
+            <main className="h-4/5">
               {children}
             </main>
         </UserProvider>        
