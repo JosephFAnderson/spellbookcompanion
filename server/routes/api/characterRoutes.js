@@ -17,7 +17,9 @@ router.post('/', async (req, res) => {
         }
 
         const character = await Character.create( {name, user_id, class_id} );
-        res.status(200).json(character);
+        const charRes = {name: character.name, id: character.id}
+        
+        res.status(200).json(charRes);
     }catch (err) {
         res.status(500).json("Error");
     }

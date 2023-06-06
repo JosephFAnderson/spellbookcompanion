@@ -256,14 +256,32 @@ export default function NewCharacter({ addCharacer }) {
     const [classOptions, setClassOptions] = useState(classData);
 
     const handleSave = () => {
-        console.log("name", name);
-        console.log("class id", classId);
-        console.log("user id", user.id);
+        fetch("http://localhost:3001/api/characters", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: name,
+                user_id: user.id,
+                class_id: classId
+            })
+        })
+            .then( res => res.json() )
+            .then( character => {
+                character.class = {name: classOptions[classId-1].name};
+                console.log(character);
+                setUser({...user, characters: [...user.characters, character]});
+                setName("");
+                setClassId("");
 
-        setName("");
-        setClassId("");
-        // This removes the new character component from user view
-        addCharacer(false);
+                // This removes the new character component from user view
+                addCharacer(false);
+            })
+
+        // setUser({...user, characters: [...user.characters, {name: "Wedge", id: "3", class: {name: "Artificer"}}]})
+        
+        
     }
 
     return(
